@@ -1,0 +1,7 @@
+Host: fff
+System: Linux
+Release: 6.19.8-arch1-1
+Version: #1 SMP PREEMPT_DYNAMIC Sat, 14 Mar 2026 01:07:43 +0000
+Machine: x86_64
+host ip: 127.0.1.1
+
